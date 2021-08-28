@@ -61,7 +61,7 @@ export default function Keyword({ query }) {
         </div>
       </nav>
 
-      <div className="section pt-2">
+      <div className="section pt-2 my-page-width">
         <div className="card mb-5 br-lg">
           <div className="card-image">
             <figure className="image is-4by3">

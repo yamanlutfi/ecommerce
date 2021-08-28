@@ -22,7 +22,7 @@ export default function Home() {
   const { isLoading, isError, data, error } = useQuery('home', fetchTodoList)
 
   return (
-    <Default page="home">
+    <Default>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />

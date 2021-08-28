@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { QueryClient, useQuery } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import replaceAll from 'replaceall'
-import Default from '../../components/layout/Default';
+import SearchNav from '../../components/layout/SearchNav';
 import Product from '../../components/Product';
 
 export async function getServerSideProps({query}) {
@@ -26,7 +26,7 @@ export default function Keyword({query}) {
   const { isLoading, isError, data, error } = useQuery(['home',1], fetchProduct)
 
   return (
-    <Default page="search">
+    <SearchNav>
       <Head>
         <title>Home</title>
         <link rel="icon" href="/favicon.ico" />
@@ -49,6 +49,6 @@ export default function Keyword({query}) {
         }
         <br/>
       </div>
-    </Default>
+    </SearchNav>
   )
 }

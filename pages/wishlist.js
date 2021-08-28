@@ -28,7 +28,7 @@ export default function Wishlist() {
         </div>
       </nav>
 
-      <div className="section pt-4">
+      <div className="section pt-4 my-page-width">
         {
           (isLoading) ?
             (<div>Loading...</div>)
