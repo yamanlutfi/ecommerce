@@ -1,0 +1,26 @@
+{
+  "name": "eCommerce",
+  "short_name": "eCommerce, the best online shopping",
+  "description": "eCommerce is the best online shopping wiht hight performance and powerfull SEO",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#ff6f43",
+  "background_color": "#FFFFFF",
+  "icons": [
+    {
+      "src": "https://eporter.id/assets/img/favicon/apple-touch-icon.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "https://eporter.id/assets/img/favicon/apple-touch-icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "https://eporter.id/assets/img/favicon/apple-touch-icon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

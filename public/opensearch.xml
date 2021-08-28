@@ -1,0 +1,8 @@
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/" xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+<ShortName>eCommerce.id Product</ShortName>
+<Description>eCommerce.id Search</Description>
+<Url type="text/html" method="get" template="https://ecommerce.id/search?keyword={searchTerms}"/>
+<Image width="16" height="16">https://ecommerce.id/assets/img/favicon/favicon-32x32.png</Image>
+<InputEncoding>UTF-8</InputEncoding>
+<moz:SearchForm>https://ecommerce.id</moz:SearchForm>
+</OpenSearchDescription>

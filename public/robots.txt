@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: 
+Sitemap: https://ecommerce.id/sitemaps/sitemaps-3.xml
+Sitemap: https://ecommerce.id/sitemaps/sitemaps-2.xml
+Sitemap: https://ecommerce.id/sitemaps/sitemaps-1.xml
