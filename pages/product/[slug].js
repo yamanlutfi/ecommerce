@@ -38,7 +38,7 @@ export default function Keyword({ query }) {
       </Head>
       <nav className="navbar is-fixed-top is-flex my-page-width" role="navigation">
         <div className="p-4 nav-item">
-          <Back/>
+          <Back />
         </div>
         <div className="pl-0 pt-4 pb-4 nav-item has-text-grey">
           Product Detail
@@ -50,35 +50,44 @@ export default function Keyword({ query }) {
         </div>
       </nav>
 
-      <nav className="navbar is-fixed-bottom my-page-width" role="navigation">
-        <div className="navbar-menu pb-0">
-          <div className="navbar-item pt-1 is-expanded is-block  has-text-centered">
-            <b className="is-size-5 mb-0">{data[0].data.productPromo[0].price}</b>
-          </div>
-          <div className="navbar-item pt-0 pb-0 is-expanded is-block has-text-centered">
-            <div className="button is-info br-sm is-fullwidth mt-0 mb-0">Buy</div>
-          </div>
-        </div>
-      </nav>
+      {
+        (isLoading) ?
+          (<div>Loading...</div>)
+          : (isError) ?
+            (<span>Error: {error.message}</span>)
+            :
+            (
+              <nav className="navbar is-fixed-bottom my-page-width" role="navigation">
+                <div className="navbar-menu pb-0">
+                  <div className="navbar-item pt-1 is-expanded is-block  has-text-centered">
+                    <b className="is-size-5 mb-0">{data[0].data.productPromo[0].price}</b>
+                  </div>
+                  <div className="navbar-item pt-0 pb-0 is-expanded is-block has-text-centered">
+                    <div className="button is-info br-sm is-fullwidth mt-0 mb-0">Buy</div>
+                  </div>
+                </div>
+              </nav>,
 
-      <div className="section pt-2 my-page-width">
-        <div className="card mb-5 br-lg">
-          <div className="card-image">
-            <figure className="image is-4by3">
-              <img src={data[0].data.productPromo[0].imageUrl} alt={data[0].data.productPromo[0].title} className="img-detail-product" />
-            </figure>
-          </div>
-        </div>
-        <div className="is-relative">
-          <div className="title is-4 mb-2">{data[0].data.productPromo[0].title}</div>
-          <Wishlist className="heart-product-detail" />
-        </div>
-        <div className="mt-5">
-          <div className="title ttl mb-2">Description</div>
-          <div dangerouslySetInnerHTML={createMarkup(data[0].data.productPromo[0].description)} />
-        </div>
-        <br />
-      </div>
+              <div className="section pt-2 my-page-width">
+                <div className="card mb-5 br-lg">
+                  <div className="card-image">
+                    <figure className="image is-4by3">
+                      <img src={data[0].data.productPromo[0].imageUrl} alt={data[0].data.productPromo[0].title} className="img-detail-product" />
+                    </figure>
+                  </div>
+                </div>
+                <div className="is-relative">
+                  <div className="title is-4 mb-2">{data[0].data.productPromo[0].title}</div>
+                  <Wishlist className="heart-product-detail" />
+                </div>
+                <div className="mt-5">
+                  <div className="title ttl mb-2">Description</div>
+                  <div dangerouslySetInnerHTML={createMarkup(data[0].data.productPromo[0].description)} />
+                </div>
+                <br />
+              </div>
+            )
+      }
     </div>
   )
 }

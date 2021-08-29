@@ -1,7 +1,5 @@
 import Head from 'next/head'
 import { useQuery } from 'react-query'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import Back from '../components/Back'
 
 export default function Cart() {
@@ -28,7 +26,7 @@ export default function Cart() {
         </div>
       </nav>
 
-      <div className="section pt-4">
+      <div className="section pt-4 my-page-width">
         {
           (isLoading) ?
             (<div>Loading...</div>)

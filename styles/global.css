@@ -184,3 +184,11 @@
   max-height: 128px !important;
   max-width: 128px !important;
 }
+
+#nprogress {
+  position: relative;
+  z-index: 9999999;
+}
+#nprogress .bar {
+  height: 3.5px !important;
+}
