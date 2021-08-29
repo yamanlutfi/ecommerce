@@ -1,15 +1,52 @@
 import Head from 'next/head'
+import { useRef } from 'react'
+import { useRouter } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
-import Link from 'next/link'
 import GoogleLoginBtn from '../components/GoogleLoginBtn'
 import FacebookLoginBtn from '../components/FacebookLoginBtn'
 
 
 export default function login(props) {
+  const router = useRouter()
+  const refBtn = useRef(null)
 
   const setMsg = (msg) => {
     setMessage(msg)
+  }
+
+  const submitLogin = async (e) => {
+    e.preventDefault()
+    refBtn.current.disabled = true
+    refBtn.current.innerHTML = "Loading..."
+
+    var body = {};
+    const formData = new FormData(e.target);  
+    Array.from(formData.entries()).forEach(([key, value]) => {
+      body[key] = value;
+    })
+
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    }
+    const arr = await fetch(process.env.API + "auth/login", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        return data
+      })
+
+    // Save Token for access data Cart and wishlist
+    localStorage.setItem("token", arr.token)
+    localStorage.setItem("name", arr.name)
+
+    refBtn.current.disabled = false
+    refBtn.current.innerHTML = "Sign in"
+
+    if(arr.status == "Success"){
+      router.push('/')
+    }
   }
 
   return (
@@ -23,11 +60,11 @@ export default function login(props) {
           <div className="container">
             <div className="columns is-centered">
               <article className="card is-rounded br-md">
-                <form className="card-content">
+                <form className="card-content" onSubmit={submitLogin}>
                   <h1 className="title has-text-centered is-fullwidth">Login</h1>
                   <div className="field">
                     <p className="control has-icons-left">
-                      <input className="input br-text" type="email" placeholder="Email / Username" />
+                      <input className="input br-text" type="text" placeholder="Email / Username" name="username" required/>
                       <span className="icon is-small is-left">
                         <FontAwesomeIcon icon={faEnvelope} className="my-icon" />
                       </span>
@@ -35,7 +72,7 @@ export default function login(props) {
                   </div>
                   <div className="field">
                     <p className="control has-icons-left">
-                      <input className="input br-text" type="password" placeholder="Password" />
+                      <input className="input br-text" type="password" placeholder="Password" name="password" required/>
                       <span className="icon is-small is-left">
                         <FontAwesomeIcon icon={faLock} className="my-icon" />
                       </span>
@@ -51,11 +88,9 @@ export default function login(props) {
                   </div>
                   <div className="field mb-0">
                     <p className="control">
-                      <Link href="/">
-                        <button type="submit" className="button is-primary br-sm is-fullwidth">
-                          Sign in
-                        </button>
-                      </Link>
+                      <button ref={refBtn} type="submit" className="button is-primary br-sm is-fullwidth">
+                        Sign in
+                      </button>
                     </p>
                   </div>
                   <div className="pt-1 pb-1">

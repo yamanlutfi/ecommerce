@@ -4,51 +4,42 @@ import { useRouter } from 'next/router'
 
 const GoogleLoginBtn = (props) => {
   const router = useRouter()
-  const [lastPage, setLastPage] = useState('')
   const [isMounted, setIsMounted] = useState(false)
 
   const responseGoogle = async (response) => {
-    var formData = new FormData();
-    formData.append("email", response.profileObj.email);
-    formData.append("name", response.profileObj.name);
-    formData.append("client_id", process.env.REACT_APP_SERVER_CLIENT);
-    formData.append("secret_key", process.env.REACT_APP_SERVER_KEY);
-    formData.append("exp", process.env.REACT_APP_SERVER_EXP);
-
-    // var getLogin = await Post('login-google', formData);
-    // var errorMessage = "Login dengan Google gagal";
-    // if(getLogin.status === "ERROR"){
-    //   props.setMsg(errorMessage);
-    // }else if(getLogin.status === "OK"){
-    //   props.setMsg("");
-    //   localStorage.setItem("id", "true");
-    //   localStorage.setItem("name", getLogin.customer.name);
-    //   localStorage.setItem("token", getLogin.token);
-    //   if(lastPage === null || lastPage === ""){
-    //     router.push('/')
-    //   }else{
-    //     router.push(lastPage)
-    //   }
-    //   // props.getCart();
-    // }else if(getLogin.error.status == "ERROR"){
-    //   props.setMsg(errorMessage);
-    // }
-    formData.delete('email');
-    formData.delete('name');
+    const body = {
+      email: response.profileObj.email,
+      name: response.profileObj.name
+    }
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body)
+    };
+    const arr = await fetch(process.env.API + "auth/login_google", requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        return data
+      });
+    localStorage.setItem("token", arr.token)
+    localStorage.setItem("name", response.profileObj.name)
+    router.push('/')
   }
+
   const responseGoogleFail = async (response) => {
     var errorMessage = "Login dengan Google gagal";
   }
+
   useEffect(() => {
     setIsMounted(true)
-    setLastPage((localStorage.getItem('lastPage'))? localStorage.getItem('lastPage') : '/')
-    
+
     return function cleanup() {
       setIsMounted(false)
     };
-  },[]);
-  if(isMounted){
-    return(
+  }, []);
+  
+  if (isMounted) {
+    return (
       <GoogleLogin
         clientId="682556003693-6sbae3dl0q1q0mqlk80dkc3hls8v6npl.apps.googleusercontent.com"
         render={renderProps => (
@@ -63,8 +54,8 @@ const GoogleLoginBtn = (props) => {
         cookiePolicy={'single_host_origin'}
       />
     )
-  }else{
-    return(
+  } else {
+    return (
       <div></div>
     )
   }
