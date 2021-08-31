@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import GoogleLogin from 'react-google-login';
 import { useRouter } from 'next/router'
+import Api from '../components/Api'
 
 const GoogleLoginBtn = (props) => {
   const router = useRouter()
@@ -11,17 +12,8 @@ const GoogleLoginBtn = (props) => {
       email: response.profileObj.email,
       name: response.profileObj.name
     }
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    };
-    const arr = await fetch(process.env.API + "auth/login_google", requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        return data
-      });
-    localStorage.setItem("token", arr.token)
+    const responseAPI = await Api("auth/login_google", "POST", body)
+    localStorage.setItem("token", responseAPI.token)
     localStorage.setItem("name", response.profileObj.name)
     router.push('/')
   }

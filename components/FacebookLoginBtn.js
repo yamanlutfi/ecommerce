@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import FacebookLogin  from 'react-facebook-login/dist/facebook-login-render-props';
 import { useRouter } from 'next/router'
+import Api from '../components/Api'
 
 const FacebookLoginBtn = (props) => {
   const router = useRouter()
@@ -11,17 +12,8 @@ const FacebookLoginBtn = (props) => {
       facebook_id: response.id,
       name: response.name
     }
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    };
-    const arr = await fetch(process.env.API + "auth/login_facebook", requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        return data
-      });
-    localStorage.setItem("token", arr.token)
+    const responseAPI = await Api("auth/login_facebook", "POST", body)
+    localStorage.setItem("token", responseAPI.token)
     localStorage.setItem("name", response.name)
     router.push('/')
   }

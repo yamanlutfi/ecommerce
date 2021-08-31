@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLock } from '@fortawesome/free-solid-svg-icons'
 import GoogleLoginBtn from '../components/GoogleLoginBtn'
 import FacebookLoginBtn from '../components/FacebookLoginBtn'
+import Api from '../components/Api'
 
 
 export default function login(props) {
@@ -26,25 +27,16 @@ export default function login(props) {
       body[key] = value;
     })
 
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(body)
-    }
-    const arr = await fetch(process.env.API + "auth/login", requestOptions)
-      .then(response => response.json())
-      .then(data => {
-        return data
-      })
-
-    // Save Token for access data Cart and wishlist
-    localStorage.setItem("token", arr.token)
-    localStorage.setItem("name", arr.name)
+    const responseAPI = await Api("auth/login", "POST", body)
 
     refBtn.current.disabled = false
     refBtn.current.innerHTML = "Sign in"
 
-    if(arr.status == "Success"){
+    if(responseAPI.status == "Success"){
+      // Save Token for access data Cart and wishlist
+      localStorage.setItem("token", responseAPI.token)
+      localStorage.setItem("name", responseAPI.name)
+      
       router.push('/')
     }
   }

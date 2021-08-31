@@ -1,16 +1,14 @@
 import Head from 'next/head'
 import { useQuery } from 'react-query'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import Back from '../components/Back';
 import Product from '../components/Product';
+import ApiQuery from '../components/ApiQuery';
 
 export default function Wishlist() {
   const fetchTodoList = () => {
-    return fetch('https://private-4639ce-ecommerce56.apiary-mock.com/home').then(res =>
-      res.json()
-    )
+    return ApiQuery("wishlist/list","GET")
   }
-  const { isLoading, isError, data, error } = useQuery('home', fetchTodoList)
+  const { isLoading, isError, data, error } = useQuery('productWishlist', fetchTodoList)
 
   return (
     <div className="default-content">
@@ -34,10 +32,12 @@ export default function Wishlist() {
             (<div>Loading...</div>)
             : (isError) ?
               (<span>Error: {error.message}</span>)
+              : (data.product.length < 1) ?
+              (<span>Wishlist is empty</span>)
               :
               (
                 <div className="container">
-                  {data[0].data.productPromo.map(product => (
+                  {data.product.map(product => (
                     <Product product={product} key={product.id}/>
                   ))}
                 </div>

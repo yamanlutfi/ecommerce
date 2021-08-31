@@ -37,7 +37,7 @@ const Default = ({ children }) => {
               <p className="is-size-7">Cart</p>
             </a>
           </Link>
-          <Link href="/login">
+          <Link href="/wishlist">
             <a className="navbar-item is-expanded  is-block has-text-centered">
               <FontAwesomeIcon icon={faUser} className="my-icon has-text-grey" />
               <p className="is-size-7">Profile</p>

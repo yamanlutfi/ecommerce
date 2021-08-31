@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useQuery } from 'react-query'
 import Default from '../components/layout/Default'
 import Product from '../components/Product';
+import ApiQuery from '../components/ApiQuery';
 
 /* Slide feature */
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -14,12 +15,18 @@ import SwiperCore, {
 SwiperCore.use([Scrollbar]);
 
 export default function Home() {
-  const fetchTodoList = () => {
+  const fetchCategory = () => {
     return fetch('https://private-4639ce-ecommerce56.apiary-mock.com/home').then(res =>
       res.json()
     )
   }
-  const { isLoading, isError, data, error } = useQuery('home', fetchTodoList)
+  const { isLoading: isLoadingCategory, isError: isErrorCategory, data: dataCategory, error: errorCategory } = useQuery("home", fetchCategory)
+  
+  
+  const fetchProduct = () => {
+    return ApiQuery("product/list","GET")
+  }
+  const { isLoading: isLoadingProduct, isError: isErrorProduct, data: dataProduct, error: errorProduct } = useQuery("product", fetchProduct)
 
   return (
     <Default>
@@ -28,10 +35,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {
-        (isLoading) ?
+        (isLoadingCategory) ?
           (<div>Loading...</div>)
-          : (isError) ?
-            (<span>Error: {error.message}</span>)
+          : (isErrorCategory) ?
+            (<span>Error: {errorCategory.message}</span>)
             :
             (
 
@@ -69,7 +76,7 @@ export default function Home() {
                     spaceBetween: 16,
                   }
                 }} className="mySwiper">
-                {data[0].data.category.map(category => (
+                {dataCategory[0].data.category.map(category => (
                   <SwiperSlide key={category.id}>
                     <div className="p-2 br-md is-vcentered">
                       <img src={category.imageUrl} className="is-block" />
@@ -82,14 +89,20 @@ export default function Home() {
       }
       <div className="section">
         {
-          (isLoading) ?
+          (isLoadingProduct) ?
             (<div>Loading...</div>)
-            : (isError) ?
-              (<span>Error: {error.message}</span>)
+            : (isErrorProduct) ?
+              (<span>Error: {errorProduct.message}</span>)
+              :(dataProduct.product.length == 0) ?
+              (
+                <div className="container">
+                  Product is empty
+                </div>
+              )
               :
               (
                 <div className="container">
-                  {data[0].data.productPromo.map(product => (
+                  {dataProduct.product.map(product => (
                     <Product product={product} key={product.id}/>
                   ))}
                 </div>

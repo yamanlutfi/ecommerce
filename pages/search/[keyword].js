@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { QueryClient, useQuery } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import replaceAll from 'replaceall'
+import ApiQuery from '../../components/ApiQuery';
 import SearchNav from '../../components/layout/SearchNav';
 import Product from '../../components/Product';
 
@@ -17,9 +18,7 @@ export async function getServerSideProps({query}) {
 }
 
 const fetchProduct = () => {
-  return fetch('https://private-4639ce-ecommerce56.apiary-mock.com/home').then(res =>
-    res.json()
-  )
+  return ApiQuery("product/list","GET")
 }
 
 export default function Keyword({query}) {
@@ -41,7 +40,7 @@ export default function Keyword({query}) {
               :
               (
                 <div className="container">
-                  {data[0].data.productPromo.map(product => (
+                  {data.product.map(product => (
                     <Product product={product} key={product.id}/>
                   ))}
                 </div>
