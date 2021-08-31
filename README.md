@@ -35,7 +35,7 @@ https://user-images.githubusercontent.com/22767493/131552697-a89b4b2b-3d53-47cc-
 <br/>
 
 ## SEO Maksimal
-1. Saya memakai robot.txt sehingga bisa mengcrawl data dari sitemap. Dan website yang saya buat ini sangat _sitemap friendly_. Sitemap sendiri manjadi salah satu hal yg penting untuk SEO.
+1. Saya memakai robot.txt sehingga bisa mengcrawl data dari sitemap. Dan website yang saya buat ini sangat _sitemap friendly_. Sitemap sendiri menjadi salah satu hal yg penting untuk SEO.
 2. URL di projek ini sudah sangat SEO friendly. Bisa dicek pada URL [page detail product](http://localhost:3000/product/nitendo-switch) dan [page hasil pencarian](http://localhost:3000/search/gitar-akustikh). Kedua page ini pun sudah SSR yang artinya sasngat bagus dan sangat sehat untuk SEO (Selain dari kedua page ini menggunakan CSR).
 3. Saya sudah menambahkan canonical. Canonical sendiri sangat terpakai sekali karena bisa menghindari duplikasi data SEO.
 4. Untuk metanya sudah saya set semua sehingga tidak ada celah untuk masalah SEO
