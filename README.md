@@ -2,7 +2,7 @@
 
 ## Instalasi
 
-1. Pastian Docker sudah dinyalakan.
+1. Pastikan Docker sudah dinyalakan.
 2. Jalankan cmd di bawah ini pada folder projek kita untuk build package :
 ```bash
 docker build . -t ecommerce
