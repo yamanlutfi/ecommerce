@@ -7,7 +7,7 @@ const Api = (url, method, body = {}) => {
 		method: method,
 		headers: { 
 			"Content-Type": "application/json",
-			"Authorization": token
+			"authorization": token
 		},
 		body: JSON.stringify(body)
 	};

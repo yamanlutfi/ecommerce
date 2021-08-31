@@ -9,7 +9,7 @@ const ApiQuery = (url, method, body = null) => {
       method: method,
       headers: { 
         "Content-Type": "application/json",
-        "Authorization": token
+        "authorization": token
       }
     }
     if(body != null){

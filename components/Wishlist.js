@@ -26,7 +26,7 @@ const Wishlist = (props) => {
 
   // Delete Wishlist
   const deleteWishlist = () => {
-    return ApiQuery("wishlist/del/"+props.id,"DELETE")
+    return ApiQuery("wishlist/del/"+props.id,"GET")
   }
   const deleteMutation = useMutation(deleteWishlist, {
     onMutate: data => {

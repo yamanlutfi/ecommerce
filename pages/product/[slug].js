@@ -88,7 +88,7 @@ export default function Keyword({ query }) {
   // For Meta  
   const title = `Jastip - Jual beli ${data.product.title} | eCommerce`
   const description = `Jual ${data.product.title}. ${(data.product.description) ? data.product.description.replace(/<[^>]*>?/gm, '').replace(/[\n\r]+/g, ' ').trim() : ""} - eCommerce`
-  const canonical = process.env.API + "/product/" + data.product.slug
+  const canonical = "http://localhost:3000/product/" + data.product.slug
   const image_product = data.product.image_url
 
   // Schema Product Detail

@@ -30,7 +30,7 @@ export default function Keyword({query}) {
   const description = `Jual beli ${query.keyword} murah hanya di eCommerce. Lengkap, murah, aman dan nyaman.`
 
   // Reuse Dinamyc Schema
-  const url = `${process.env.API}search/${query.keyword}`
+  const url = `http://localhost:3000/search/${query.keyword}`
   const headMeta = SearchSchema(data,query,data.product.per_page,url)
 
   return (
