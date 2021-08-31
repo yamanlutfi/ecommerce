@@ -4,11 +4,7 @@ import ApiQuery from '../components/ApiQuery'
 import Back from '../components/Back'
 
 export default function Cart() {
-  const sleep = (milliseconds) => {
-    return new Promise(resolve => setTimeout(resolve, milliseconds))
-  }
   const fetchTodoList = async () => {
-    await sleep(2000)
     return ApiQuery("cart/list", "GET")
   }
   const { isLoading, isError, data, error } = useQuery("cart", fetchTodoList)
