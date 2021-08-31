@@ -1,4 +1,4 @@
-# Tes interview SehatQ. Mengedepankan Desain Maksimal, Performa Maksimal dan SEO Maksimal.
+# Tes interview SehatQ. Projek ini mengedepankan Desain Maksimal, Performa Maksimal dan SEO Maksimal.
 
 ## Instalasi
 
@@ -40,15 +40,18 @@ https://user-images.githubusercontent.com/22767493/131552697-a89b4b2b-3d53-47cc-
 3. Saya sudah menambahkan canonical. Canonical sendiri sangat terpakai sekali karena bisa menghindari duplikasi data SEO.
 4. Untuk metanya sudah saya set semua sehingga tidak ada celah untuk masalah SEO
 5. Saya sudah memakai schema juga. schema mampu menyimpan data yang lebih mendetail. Seperti data judul produk, harga produk, rating produk, jumlah ulasan dan lain-lain. Data-data yang mendetail ini nantinya akan dimanfaatkan oleh pencarian google agar pencarian google bisa menampilkan data website kita lebih akurat dan informatif.
-6. Pada projek yang saya buat kali ini skor SEO nya jika kita tes menggunakan **google Lighthouse** maka hasilnya adalah **100** (Merupakan nilai SEO tertinggi. Mengalahkan Shopee yg memiliki skor 93 dan mengalahkan bukalapak bukalapak yg memiliki skor 90).
+6. Pada projek yang saya buat kali ini skor SEO nya jika kita tes menggunakan **Google Chrome Lighthouse** maka hasilnya adalah **100** (Merupakan nilai SEO tertinggi. Mengalahkan Shopee yg memiliki skor 93 dan mengalahkan bukalapak bukalapak yg memiliki skor 90).
 - Berikut screenshot dari nilai SEO di bukalapak :
+
 ![image](https://user-images.githubusercontent.com/22767493/131561114-343536e9-f1c0-4302-a9cd-640760aa0ec1.png)
+
 - Lalu berikut adalah screenshot nilai SEO dari webiste yang saya buat
+
 ![image](https://user-images.githubusercontent.com/22767493/131561253-8c416e2e-2cb0-4c37-8bb4-b1ea942eec89.png)
 
 ## Lainnya
-1. Memakai React Hook
-2. Memakai useState
-3. memakai useEffect
-4. memakai useReff
-
+1. Memakai **React Hook**
+2. Memakai **useState**
+3. memakai **useEffect**
+4. memakai **useRef**
+5. Saya membuat **API Backend** sendiri. Sehingga ketika kita mengklik tombol **Buy** pada [page detail product](http://localhost:3000/product/nitendo-switch) maka data [Purchase History](http://localhost:3000/cart) akan benar-benar bertambah sehingga ketika websitenya direload maka data [Purchase History](http://localhost:3000/cart) tidak akan kosong lagi.
