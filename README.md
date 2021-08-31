@@ -46,3 +46,9 @@ https://user-images.githubusercontent.com/22767493/131552697-a89b4b2b-3d53-47cc-
 - Lalu berikut adalah screenshot nilai SEO dari webiste yang saya buat
 ![image](https://user-images.githubusercontent.com/22767493/131561253-8c416e2e-2cb0-4c37-8bb4-b1ea942eec89.png)
 
+## Lainnya
+1. Memakai React Hook
+2. Memakai useState
+3. memakai useEffect
+4. memakai useReff
+
