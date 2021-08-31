@@ -206,7 +206,7 @@ export default function Keyword({ query }) {
           : (isError) ?
             (<span>Error: {error.message}</span>)
             : (data.product.length < 1) ?
-              (<span>Wishlist is empty</span>)
+              (<span>Product not found</span>)
               :
               (<>
                 <nav className="navbar is-fixed-bottom my-page-width" role="navigation">
@@ -229,7 +229,7 @@ export default function Keyword({ query }) {
                     </div>
                   </div>
                   <div className="is-relative">
-                    <h1 className="title is-4 mb-2">{data.product.title}</h1>
+                    <h1 className="title is-4 mb-2 pr-5">{data.product.title}</h1>
                     {isMounted &&
                       <Wishlist className="heart-product-detail" id={data.product.id} />
                     }
