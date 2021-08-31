@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import { useRouter } from 'next/router'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import replaceAll from 'replaceall'
 import { faArrowLeft, faSearch } from '@fortawesome/free-solid-svg-icons'
 import Link from 'next/link'
 
@@ -22,7 +23,7 @@ export default function SearchBox({btn}) {
   const submitSearch = (e) => {
     hideSearchBox()
     e.preventDefault()
-    router.push("/search/"+refFocus.current.value)
+    router.push("/search/"+replaceAll(" ","-",refFocus.current.value))
   }
 
   return (

@@ -37,7 +37,6 @@ export default function App({ Component, pageProps }) {
       <meta name='apple-mobile-web-app-capable' content='yes' />
       <meta name='apple-mobile-web-app-status-bar-style' content='default' />
       <meta name='apple-mobile-web-app-title' content='eCommerce' />
-      <meta name='description' content='eCommerce cross border online shopping marketplace' />
       <meta name='format-detection' content='telephone=no' />
       <meta name='mobile-web-app-capable' content='yes' />
       <meta name='msapplication-config' content='/static/icons/browserconfig.xml' />
