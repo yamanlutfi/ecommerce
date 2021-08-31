@@ -51,9 +51,9 @@ const Wishlist = (props) => {
   }
 
   if(isLoadingWishlist){
-    return (<div>Loading</div>)
+    return ("")
   }else if(isErrorWishlist){
-    return (<div>{errorWishlist}</div>)
+    return ("")
   }
 
   return (
