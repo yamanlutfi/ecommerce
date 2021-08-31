@@ -32,7 +32,7 @@ export default function Cart() {
             : (isError) ?
               (<span>Error: {error.message}</span>)
               : (data.product.length < 1) ?
-                (<span>Cart is empty</span>)
+                (<span>Purchase is empty</span>)
                 :
                 (
                   <div className="container">

@@ -2,8 +2,8 @@ import Head from 'next/head'
 import { QueryClient, useQuery, useMutation, useQueryClient } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShareAlt } from '@fortawesome/free-solid-svg-icons'
-import { useEffect, useState } from 'react'
+import { faShareAlt, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { useEffect, useState, useRef } from 'react'
 import Wishlist from '../../components/Wishlist'
 import Back from '../../components/Back'
 import ApiQuery from '../../components/ApiQuery'
@@ -28,6 +28,8 @@ const createMarkup = (description) => {
 }
 
 export default function Keyword({ query }) {
+  const refModal = useRef(null)
+  const refBtn = useRef(null)
 
   /*------------------ START LOGIC FOR PERFORMANCE --------------------*/
 
@@ -45,9 +47,17 @@ export default function Keyword({ query }) {
   const postMutation = useMutation(postCart, {
     onMutate: data => {
       queryClient.setQueryData("cart", data)
+    },
+    onSuccess: data => {
+      refModal.current.classList.add("is-active")
+      refBtn.current.disabled = false
+      refBtn.current.innerHTML = "Buy"
     }
   })
   const insertCart = () => {
+    refBtn.current.disabled = true
+    refBtn.current.innerHTML = "Loading..."
+
     // Save data cart to cache (Combine Cart data in cache with cart data that you Post)
     const newCart = {product: [...dataCart.product, {
       product_id: data.product.id, 
@@ -70,6 +80,10 @@ export default function Keyword({ query }) {
   const { isLoading: isLoadingCart, isError: isErrorCart, data: dataCart, error: errorCart } = useQuery("cart", fetchCart)
 
   /*--------------------- END LOGIC FOR PERFORMANCE -----------------------*/
+
+  const closeModal = () => {
+    refModal.current.classList.remove("is-active")
+  }
 
   useEffect(() => {
     setIsMounted(true)
@@ -113,7 +127,7 @@ export default function Keyword({ query }) {
                       <b className="is-size-5 mb-0">{data.product.price}</b>
                     </div>
                     <div className="navbar-item pt-0 pb-0 is-expanded is-block has-text-centered">
-                      <div className="button is-info br-sm is-fullwidth mt-0 mb-0" onClick={insertCart}>Buy</div>
+                      <div ref={refBtn} className="button is-info br-sm is-fullwidth mt-0 mb-0" onClick={insertCart}>Buy</div>
                     </div>
                   </div>
                 </nav>
@@ -141,6 +155,18 @@ export default function Keyword({ query }) {
               </>
               )
       }
+      <div ref={refModal} class="modal pl-5 pr-5">
+        <div class="modal-background" onClick={closeModal}></div>
+        <div class="modal-content has-background-white pb-5 pt-5 pl-5 br-lg">
+        <span class="icon-text">
+          <span class="icon mr-3">
+            <FontAwesomeIcon icon={faCheckCircle} className="w-26 has-text-info" />
+          </span>
+          <span className="title is-5">Add to cart successfully</span>
+        </span>
+        </div>
+        <button class="modal-close is-large" aria-label="close" onClick={closeModal}></button>
+      </div>
     </div>
   )
 }
