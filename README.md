@@ -55,3 +55,4 @@ https://user-images.githubusercontent.com/22767493/131552697-a89b4b2b-3d53-47cc-
 3. memakai **useEffect**
 4. memakai **useRef**
 5. Saya membuat **API Backend** sendiri. Sehingga ketika kita mengklik tombol **Buy** pada [page detail product](http://localhost:3000/product/nitendo-switch) maka data [Purchase History](http://localhost:3000/cart) akan benar-benar bertambah sehingga ketika websitenya direload maka data [Purchase History](http://localhost:3000/cart) tidak akan kosong lagi.
+6. Tampilan website bisa responsive dari ukuran mobile kecil **(375)** sampai ukuran tablet **(768)**
