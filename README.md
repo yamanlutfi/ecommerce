@@ -40,7 +40,7 @@ https://user-images.githubusercontent.com/22767493/131552697-a89b4b2b-3d53-47cc-
 3. Saya sudah menambahkan canonical. Canonical sendiri sangat terpakai sekali karena bisa menghindari duplikasi data SEO.
 4. Untuk metanya sudah saya set semua sehingga tidak ada celah untuk masalah SEO
 5. Saya sudah memakai schema juga. schema mampu menyimpan data yang lebih mendetail. Seperti data judul produk, harga produk, rating produk, jumlah ulasan dan lain-lain. Data-data yang mendetail ini nantinya akan dimanfaatkan oleh pencarian google agar pencarian google bisa menampilkan data website kita lebih akurat dan informatif.
-6. Pada projek yang saya buat kali ini skor SEO nya jika kita tes menggunakan **Google Chrome Lighthouse** maka hasilnya adalah **100** (Merupakan nilai SEO tertinggi. Mengalahkan Shopee yg memiliki skor 93 dan mengalahkan bukalapak yg memiliki skor 90).
+6. Pada projek yang saya buat kali ini skor SEO nya jika kita tes menggunakan **Google Chrome Lighthouse** maka skornya adalah **100** (Merupakan nilai SEO tertinggi. Mengalahkan Shopee yg memiliki skor 93 dan mengalahkan bukalapak yg memiliki skor 90). Saya menggunakan [page detail product](http://localhost:3000/product/nitendo-switch) dan [page hasil pencarian](http://localhost:3000/search/gitar-akustikh) untuk testing SEO karena kedua page ini sangat penting untuk SEO.
 - Berikut screenshot dari nilai SEO di bukalapak :
 
 ![image](https://user-images.githubusercontent.com/22767493/131561114-343536e9-f1c0-4302-a9cd-640760aa0ec1.png)
