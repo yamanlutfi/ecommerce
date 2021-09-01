@@ -1,4 +1,4 @@
-# Tes interview SehatQ. Projek ini mengedepankan Desain Maksimal, Performa Maksimal dan SEO Maksimal.
+# Tes interview. Projek ini mengedepankan Desain Maksimal, Performa Maksimal dan SEO Maksimal.
 
 ## Instalasi
 
